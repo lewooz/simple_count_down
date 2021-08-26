@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+typedef IntCallback = Function(int value);
 ///
 /// Controller for Count down
 ///
@@ -12,6 +13,8 @@ class CountdownController {
 
   /// Called when restarting the timer
   VoidCallback? onRestart;
+
+  IntCallback? onSetTimer;
 
   /// Called when timer is staring
   VoidCallback? onStart;
@@ -92,5 +95,18 @@ class CountdownController {
   /// set onRestart callback
   setOnRestart(VoidCallback onRestart) {
     this.onRestart = onRestart;
+  }
+
+  ///
+  /// Set timer seconds
+  ///
+  setTimer(int seconds) {
+    if (this.onSetTimer != null) {
+      this.onSetTimer!(seconds);
+    }
+  }
+
+  setOnSetTimer(IntCallback onSetTimer) {
+    this.onSetTimer = onSetTimer;
   }
 }

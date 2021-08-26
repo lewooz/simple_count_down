@@ -58,6 +58,7 @@ class _CountdownState extends State<Countdown> {
     widget.controller?.setOnPause(_onTimerPaused);
     widget.controller?.setOnResume(_onTimerResumed);
     widget.controller?.setOnRestart(_onTimerRestart);
+    widget.controller?.setOnSetTimer(_onSetTimer);
     widget.controller?.isCompleted = false;
 
     if (widget.controller == null || widget.controller!.autoStart == true) {
@@ -111,7 +112,16 @@ class _CountdownState extends State<Countdown> {
     });
 
     _startTimer();
+
+  } void _onSetTimer(int seconds) {
+    print('Timer set to $seconds');
+
+    setState(() {
+      _currentMicroSeconds = seconds * _secondsFactor;
+    });
   }
+
+
 
   ///
   /// Start timer
