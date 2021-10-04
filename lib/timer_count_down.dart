@@ -148,10 +148,12 @@ class _CountdownState extends State<Countdown> {
 
             widget.controller?.isCompleted = true;
           } else {
-            setState(() {
-              _currentMicroSeconds =
-                  _currentMicroSeconds - widget.interval.inMicroseconds;
-            });
+            if(mounted){
+              setState(() {
+                _currentMicroSeconds =
+                    _currentMicroSeconds - widget.interval.inMicroseconds;
+              });
+            }
           }
         },
       );
