@@ -73,7 +73,9 @@ class _CountdownState extends State<Countdown> {
     if (_timer?.isActive == true) {
       _timer?.cancel();
     }
-
+    if(widget.controller!=null){
+      widget.controller == null;
+    }
     super.dispose();
   }
 
